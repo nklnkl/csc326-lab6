@@ -8,20 +8,20 @@ class Customer {
   public:
 
     // Blank customer object.
-    Customer();
+    Customer ();
     // Named customer object.
-    Customer(string n);
+    Customer (string n);
 
-    ~Customer();
+    ~Customer ();
 
     // Getters, times return -1 if not set.
-    string getName() const;
-    int getArrival() const;
-    int getService() const;
-    int getFinish() const;
+    string getName () const;
+    int getArrival () const;
+    int getService () const;
+    int getFinish () const;
 
     // To change name of customer, returns true if new name is different.
-    bool setName(string n);
+    bool setName (string n);
     // Sets the arrival time, returns true if value was valid.
     bool setArrival (int a);
     // Sets the service time, returns true if value was valid.
