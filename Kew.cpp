@@ -1,6 +1,4 @@
 #include "Kew.h"
-#include <iostream>
-using namespace std;
 Kew::Kew (int m) {
 
   max = 100;

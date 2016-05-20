@@ -1,8 +1,12 @@
 #include "Kew.cpp"
 #include <iostream>
+#include <string>
+#include <queue>
+#include <stack>
 using namespace std;
 
 int kew (int m);
+bool palindrome (string);
 
 int main () {
   bool success = false;
@@ -20,22 +24,32 @@ int main () {
     if (input > -1 && input < 5) success = true;
   }
 
-
-
   // Step 1 for problems 1-3.
   if (input > 0 && input < 4 ) {
+    // Call kew with the user input as the parameter.
     kew(input);
   }
   // Problem 4.
   else {
+    string exp;
+    cout << "Enter an expression." << endl;
+    cout << "$: ";
+    cin >> exp;
+    if (palindrome (exp)) {
+      cout << "It is palindrome." << endl;
+    } else {
+      cout << "It is not a palindrome," << endl;
+    }
   }
 
   return 0;
 }
 
 int kew (int m) {
-  bool success;
+  // m will determine the memory type used by this object. check the class
+  // implementation for the breakdown of how this works.
   Kew myQueue (m);
+  bool success;
 
   // Step 2.
   Customer newCus ("Tom");
@@ -70,4 +84,24 @@ int kew (int m) {
   }
 
   return 0;
+}
+
+bool palindrome (string exp) {
+  queue<char> q;
+  stack<char> s;
+
+  // Loop through the string and push its characters into a stack/queue.
+  for(int i = 0; i < exp.length(); i++) {
+    q.push(exp.at(i));
+    s.push(exp.at(i));
+  }
+
+  while ((!s.empty()) && (!q.empty())) {
+    if (s.top() != q.front())
+      return false;
+    s.pop();
+    q.pop();
+  }
+
+  return true;
 }
